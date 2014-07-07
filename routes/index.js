@@ -7,7 +7,7 @@ var currentRoomConfig = [];
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	res.render('index', { title: 'Manual Director - Q' , rules: JSON.stringify(rules)});
+	res.render('index', { title: 'Manual Director - Q' , roomConfig: null});
 
 });
 

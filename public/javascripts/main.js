@@ -4,8 +4,8 @@ var PolicyEditor = function (options){
 	var activeRuleOptions = "";
 
 	var init = function (){
-		$(".options").hide();
-		addHandlers();
+		//$(".options").hide();
+		//addHandlers();
 		FastClick.attach(document.body);
 	};
 

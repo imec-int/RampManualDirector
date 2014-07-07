@@ -7,57 +7,12 @@
 
   </head>
   <body>
-	<h1>Rules:</h1>
+	<h1>Manual Director</h1>
 
 	<script>
-		var allRules = <%- rules %>;
+		var roomConfig = <%- roomConfig %>;
 	</script>
-	<ol class="rules">
-		<% myrules = JSON.parse(rules); %>
-		<% for(var i = 0; i < myrules.length; i++) { %>
-			<li class="rule" data-id="<%= myrules[i].id %>">
-				<div class="if" data-id="<%= myrules[i].antecedent.id %>">
-					<!--<span class="if_text">IF</span>-->
-					<div class="vac if_descr">
-						<div><%= myrules[i].description %></div>
-					</div>
-				</div>
-				<div class="then" data-id="<%= myrules[i].consequent.id %>">
-					<ul class="shots">
-						<% for(var j = 0; j < myrules[i].consequent.subRules.length; j++) { %>
-							<li class="vac shot" data-id="<%= myrules[i].consequent.subRules[j].id %>">
-								<div><%= myrules[i].consequent.subRules[j].description %></div>
-								<a class="removeButton"><span class="glyphicon glyphicon-remove"></span></a>
-								<div class="timing">
-									<a class="minButton"><span class="glyphicon glyphicon-minus"></span></a>
-									<span class="glyphicon glyphicon-time"></span>
-									<input type="text" value="<%= myrules[i].timing %>">
-									<a class="plButton"><span class="glyphicon glyphicon-plus"></span></a>
-								</div>
-							</li>
-						<% } %>
-					</ul>
-					<div id="plus_<%= i %>" class="plusButton"><span class="glyphicon glyphicon-plus"></span></div>
-					<div class="randomness">
-						<span class="glyphicon glyphicon-random"></span>
-						<input type="text" value="<%= myrules[i].randomness %>">
-						<div class="randomSlider" data-start="<%= myrules[i].randomness %>"></div>
-					</div>
-				</div>
-				<div class="options" >
-					<% for(var j = 0; j < myrules[i].consequent.options.length; j++) { %>
-					<div class="vac option" data-j="<%= j %>">
-						<div><%= myrules[i].consequent.options[j].description %></div>
-					</div>
-					<% } %>
-				</div>
-			</li>
 
-
-		<% } %>
-	</ol>
-
-	<div class="syncButton"><div class="buttonLabel">Sync Server</div><span class="glyphicon glyphicon-refresh"></span></div>
 
 
 	<script src="vendor/fastclick.js"></script>
