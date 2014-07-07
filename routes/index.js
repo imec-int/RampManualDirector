@@ -11,6 +11,10 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/dragtest', function(req, res) {
+	res.render('dragtest', { title: 'Drag test'});
+});
+
 /* POST trigger to the Trigger Consolidation Secret Command Center */
 //router.post(.......
 

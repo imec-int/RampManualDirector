@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<style>
+		    h1 {
+		      margin: 30px;
+		      text-align: center;
+		    }
+
+		    .drag {
+		      position: absolute;
+		      left: 100px;
+		      top: 100px;
+		      background: #9fe1e7;
+		      border-radius: 50px;
+		      width: 100px;
+		      height: 100px;
+		    }
+
+		    .drag1 { background: #42d692; }
+		    .drag2 { background: #4986e7; }
+		    .drag3 { background: #d06b64; }
+		    .drag4 { background: #cd74e6; }
+		    .drag5 { background: #9fe1e7; }
+		  </style>
+	</head>
+	<body>
+		<h1>Drag test</h1>
+
+		<div id="container">
+			<div class="drag drag1"></div>
+			<div class="drag drag2"></div>
+			<div class="drag drag3"></div>
+			<div class="drag drag4"></div>
+			<div class="drag drag5"></div>
+		</div>
+
+
+		<script type='text/javascript' src='/vendor/jquery-1.11.0.min.js'></script>
+		<script type='text/javascript' src='/vendor/hammer.js'></script>
+		<script type='text/javascript' src='/vendor/frame-events.js'></script>
+		<script type='text/javascript' src='/vendor/raf.js'></script>
+
+		<script>
+			$(document).bind('touchmove', false);
+
+			var container = document.getElementById("container");
+			var fragment = document.createDocumentFragment();
+
+			var hammertime = new Hammer(container, { dragMaxTouches: 0, preventDefault: true });
+			var last_touches = [];
+
+			function updatePositions() {
+				Hammer.utils.each(last_touches, function (touch) {
+					if(Hammer.utils.inStr(touch.target.className, "drag")) {
+
+						fragment.appendChild(touch.target);
+
+						touch.target.style.cssText = "left:" + (touch.pageX - 50) + "px; top:" + (touch.pageY - 50) + "px";
+					}
+				});
+				container.appendChild(fragment);
+			}
+
+			function collectTouches(ev) {
+				last_touches = ev.gesture.touches;
+			}
+
+			// frame events tries to make it run at 60fps
+			FrameEvents.on(container, "touch", updatePositions, collectTouches);
+			FrameEvents.on(container, "drag", updatePositions, collectTouches);
+
+
+		</script>
+
+
+	</body>
+</html>
