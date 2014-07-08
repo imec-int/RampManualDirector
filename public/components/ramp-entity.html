@@ -12,7 +12,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="type x y">
+<polymer-element name="ramp-entity" attributes="type x y test">
 
   <template>
     <link rel="stylesheet" href="ramp-entity.css" />
@@ -20,6 +20,7 @@ Element providing solution to no problem in particular.
     <content>
       <div class="entity" data-type="{{type}}">
         <img src="/images/{{type}}.png" />
+        [{{x}},{{y}}] {{test}}
       </div>
     </content>
 
@@ -32,16 +33,26 @@ Element providing solution to no problem in particular.
       type: "chair",
       x: 0,
       y: 0,
+      test: "",
 
       ready: function() {
+        var self = this;
+
+        // POSITIONING
         $(this).css({
           "left": this.x*64,
           "top" : this.y*64
         });
+
+        // DRAGGING
         var draggie = new Draggabilly( this, {
           containment: '#topView',
           grid: [ 64, 64 ]
         });
+
+        draggie.on( 'dragMove', function(){
+          self.task.call(self);
+        } );
       },
 
       /**
@@ -51,7 +62,10 @@ Element providing solution to no problem in particular.
        * @return {Object} Returns undefined.
        * @param {String} dummy Serves no purpose today.
        */
-      task: function(dummy) {
+      task: function() {
+        this.x = Math.floor($(this).position().left/64);
+        this.y = Math.floor($(this).position().top/64);
+        // this.test = " " +$(this).position().left;
       }
 
     });
