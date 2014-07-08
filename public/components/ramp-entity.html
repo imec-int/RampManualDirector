@@ -12,15 +12,14 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="notitle">
+<polymer-element name="ramp-entity" attributes="type x y">
 
   <template>
-
     <link rel="stylesheet" href="ramp-entity.css" />
 
     <content>
-      <div class="entity" data-type="chair">
-        <img src="/images/chair.png" />
+      <div class="entity" data-type="{{type}}">
+        <img src="/images/{{type}}.png" />
       </div>
     </content>
 
@@ -29,30 +28,20 @@ Element providing solution to no problem in particular.
   <script>
 
     Polymer('ramp-entity', {
-      /**
-       * The `noevent` event is not actually fired from here,
-       * we document it as an example of documenting events.
-       *
-       * @event noevent
-       */
 
-      /**
-       * The `notitle` attribute does not yet have a purpose.
-       *
-       * @attribute notitle
-       * @type string
-       */
-      notitle: '',
-
-      /**
-       * The `aProp` is a property that does something cool.
-       *
-       * @property aProp
-       * @type bool
-       */
-      aProp: false,
+      type: "chair",
+      x: 0,
+      y: 0,
 
       ready: function() {
+        $(this).css({
+          "left": this.x*64,
+          "top" : this.y*64
+        });
+        var draggie = new Draggabilly( this, {
+          containment: '#topView',
+          grid: [ 64, 64 ]
+        });
       },
 
       /**

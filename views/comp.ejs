@@ -18,23 +18,22 @@
 
 	<div id="container">
 		<div id="topView">
-			<h2>Manual Director - Q</h2>
-			<div class="entity" data-type="table" style="left:80px; top:90px;">
-				<img src="images/meeting_table.png" />
+			<div class="entity" data-type="table" style="left:128px; top:128px;">
+				<img src="images/table-6x3.png" />
 			</div>
-			<div class="entity" data-type="chair" style="left:160px;">
+			<div class="entity" data-type="chair" style="left:128px;">
 				<img src="images/chair.png" />
 			</div>
-			<div class="entity" data-type="chair" style="left:280px;">
+			<div class="entity" data-type="chair" style="left:192px;">
 				<img src="images/chair.png" />
 			</div>
-			<div class="entity" data-type="chair" style="left:400px;">
+			<div class="entity" data-type="chair" style="left:256px;">
 				<img src="images/chair.png" />
 			</div>
-			<div class="entity" data-type="chairman" style="left: 40px;top: 150px;-webkit-transform: rotate(-90deg);">
+			<div class="entity" data-type="chairman" style="left: 64px;top: 192px;-webkit-transform: rotate(-90deg);">
 				<img src="images/chairman_chair.png" />
 			</div>
-			<ramp-entity></ramp-entity>
+			<ramp-entity id="dragg" type="stool" x=1 y=8></ramp-entity>
 		</div>
 		<div id="buttonView">
 			<div class="button">Twitter</div>
@@ -47,6 +46,7 @@
 
 
 	<script src="vendor/fastclick.js"></script>
+	<script src="vendor/draggabilly.pkgd.min.js"></script>
 	<script src="vendor/jquery-1.11.0.min.js"></script>
 	<script src="vendor/jquery-sortable-min.js"></script>
 	<script src="vendor/jquery.nouislider.min.js"></script>

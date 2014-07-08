@@ -6,8 +6,13 @@ var PolicyEditor = function (options){
 	var init = function (){
 		$(document).bind('touchmove', false); // don't you f** scroll, Mr Document.
 
+		// var elem = $('#dragg')[0];
+		// var draggie = new Draggabilly( elem, {
+		// 	containment: '#topView',
+		// 	grid: [ 64, 64 ]
+		// });
 
-		initDragging();
+		//initDragging();
 		// FastClick.attach(document.body);
 	};
 
