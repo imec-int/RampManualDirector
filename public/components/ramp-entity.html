@@ -12,7 +12,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="type x y test">
+<polymer-element name="ramp-entity" attributes="type x y test active">
 
   <template>
     <link rel="stylesheet" href="ramp-entity.css" />
@@ -20,7 +20,8 @@ Element providing solution to no problem in particular.
     <content>
       <div class="entity" data-type="{{type}}">
         <img src="/images/{{type}}.png" />
-        [{{x}},{{y}}] {{test}}
+
+        <span class="cornerLabel">[{{x}},{{y}}] {{console}}</span>
       </div>
     </content>
 
@@ -33,7 +34,8 @@ Element providing solution to no problem in particular.
       type: "chair",
       x: 0,
       y: 0,
-      test: "",
+      console: "",
+      active: false,
 
       ready: function() {
         var self = this;
@@ -51,21 +53,23 @@ Element providing solution to no problem in particular.
         });
 
         draggie.on( 'dragMove', function(){
-          self.task.call(self);
+          self.move.call(self);
         } );
+
+        // CLICKING
+        $(this).on('click', function(){
+          self.active = !self.active;
+          if(self.active){
+            $(this).css("background-color", "rgba(255, 199, 199, 1)" );
+          }else{
+            $(this).css("background-color", "rgba(255, 199, 199, 0)" );
+          }
+        });
       },
 
-      /**
-       * The `task` method does no work at this time.
-       *
-       * @method task
-       * @return {Object} Returns undefined.
-       * @param {String} dummy Serves no purpose today.
-       */
-      task: function() {
+      move: function() {
         this.x = Math.floor($(this).position().left/64);
         this.y = Math.floor($(this).position().top/64);
-        // this.test = " " +$(this).position().left;
       }
 
     });

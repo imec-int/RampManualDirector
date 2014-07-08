@@ -28,6 +28,25 @@ h2{
 /**
  *	GLOBAL PAGE LAYOUT
  */
+.draggie{
+	width: 150px;
+	height: 150px;
+	background: #FA0;
+	border-radius: 10px;
+	z-index: 1;
+}
+
+.total-centered {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	text-align: center;
+	-webkit-transform:translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
 
 #container{
 	width: 100%;
@@ -60,6 +79,7 @@ h2{
  */
 
 #buttonView .button{
+	position: relative;
 	height: 100px;
 	background-color: rgb(240, 155, 155);
 	margin: 10px;

@@ -4,3 +4,10 @@
   cursor: move;
   position: absolute;
 }
+
+.cornerLabel{
+	color: red;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
