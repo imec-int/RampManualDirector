@@ -11,6 +11,11 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/comp', function(req, res) {
+	res.render('comp', { title: 'Manual Director - Q' , roomConfig: null});
+
+});
+
 router.get('/dragtest', function(req, res) {
 	res.render('dragtest', { title: 'Drag test'});
 });
