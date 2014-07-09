@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title><%= title %></title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+
+	<!--
+	 	WEB COMPONENTS
+	-->
+	<script src="components/bower_components/platform/platform.js"></script>
+	<link rel="import" href="components/ramp-entity.html">
+
+  </head>
+  <body>
+
+
+	<div id="container">
+		<div id="topView">
+			<ramp-entity type="table-6x3" x="2" y="2"></ramp-entity>
+			<ramp-entity type="chair" x="3" y="1"></ramp-entity>
+			<ramp-entity type="chair" x="4" y="1"></ramp-entity>
+			<ramp-entity type="chair" x="5" y="1"></ramp-entity>
+
+			<ramp-entity type="table" x="5" y="6"></ramp-entity>
+			<ramp-entity type="stool" x="8" y="7"></ramp-entity>
+
+		</div>
+		<div id="buttonView">
+			<div class="shop">
+				<div>
+					<img src="/images/chair.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- <script src="vendor/fastclick.js"></script> -->
+	<script src="vendor/draggabilly.pkgd.min.js"></script>
+	<script src="vendor/jquery-1.11.0.min.js"></script>
+	<!-- <script src="vendor/jquery-sortable-min.js"></script>
+	<script src="vendor/jquery.nouislider.min.js"></script>
+	<link rel='stylesheet' href='vendor/jquery.nouislider.css' />
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/gsap/TweenLite.min.js"></script>
+	<script src="vendor/gsap/easing/EasePack.min.js"></script>
+	<script src="vendor/gsap/jquery.gsap.min.js"></script>
+	<script src="vendor/gsap/plugins/CSSPlugin.min.js"></script>-->
+
+
+	<script src="javascripts/main.js"></script>
+  </body>
+</html>

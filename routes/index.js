@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
 
 });
 
-router.get('/comp', function(req, res) {
-	res.render('comp', { title: 'Manual Director - Q' , roomConfig: null});
+router.get('/editor', function(req, res) {
+	res.render('editor', { title: 'Manual Director - Q' , roomConfig: null});
 
 });
 
