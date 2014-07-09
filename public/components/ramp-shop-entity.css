@@ -1,6 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border-style: none;
+}
+
 :host {
   display: inline-block;
-  color: red;
-  cursor: move;
+}
+
+.shopItem{
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: top left;
+  width: 64px;
+  background-color: white;
+  margin: 4px;
+  float: left;
+  cursor: alias;
+}
+
+.shopItem img{
   position: absolute;
+  right: 0;
+  top: 36px;
+  width: 24px;
+  height: 24px;
+
+}
+
+.shopItem .info{
+  margin-top: 64px;
+  text-align: center;
+  background-color: rgb(224, 57, 61);
+  color: white;
+  line-height: 24px;
+  font-size: 12px;
+  text-transform: capitalize;
 }

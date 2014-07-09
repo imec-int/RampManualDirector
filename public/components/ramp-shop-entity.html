@@ -1,4 +1,4 @@
-<!-- <link rel="import" href="bower_components/polymer/polymer.html"> -->
+<link rel="import" href="bower_components/polymer/polymer.html">
 
 <!--
 
@@ -17,22 +17,37 @@
     <link rel="stylesheet" href="ramp-shop-entity.css" />
 
     <content>
-
+      <div id="shopMember" class="shopItem" style="background-image:url(../images/{{imgName}}.png)">
+        <img src="../images/add.png" />
+        <p class="info">{{type}} {{console}}</p>
+      </div>
     </content>
 
   </template>
 
   <script>
 
-    Polymer('ramp-entity', {
+    Polymer('ramp-shop-entity', {
 
-      type: "chair",
+      type: "member",
       console: "",
+      imgName: "chair",
 
       ready: function() {
         var self = this;
 
-
+        this.imgName = "";
+        switch(this.type){
+          case "chairman":
+            this.imgName = "chairman_chair";
+            break;
+          case "member":
+            this.imgName = "chair";
+            break;
+           case "dj":
+            this.imgName = "stool";
+            break;
+        }
 
         // // CLICKING
         // $(this).on('click', function(){
@@ -40,8 +55,18 @@
         // });
       },
 
-      task: function() {
+      imageFromType: function(type) {
+        this.console = type;
 
+        switch(type){
+          case "chairman":
+            console.log("chairman");
+            return "chairman_chair";
+          case "member":
+            return "chair";
+           case "dj":
+            return "stool";
+        }
       }
 
     });

@@ -4,7 +4,14 @@ var ManualDirector = function (options){
 	var activeRuleOptions = "";
 
 	var init = function (){
+		addHandlers();
 
+	};
+
+	var addHandlers = function (){
+		$(".shopItem").on('click', function(){
+          $("#topView")
+        });
 
 	};
 

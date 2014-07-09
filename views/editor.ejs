@@ -9,6 +9,7 @@
 	-->
 	<script src="components/bower_components/platform/platform.js"></script>
 	<link rel="import" href="components/ramp-entity.html">
+	<link rel="import" href="components/ramp-shop-entity.html">
 
 
   </head>
@@ -29,19 +30,11 @@
 		<div id="shopView" class="sideView">
 			<h2>Add new things</h2>
 			<div class="shop">
-				<div id="shopMember" class="shopItem">
-					<img src="images/add.png" />
-					<p class="info">Member</p>
-				</div>
-				<div id="shopChairman" class="shopItem">
-					<img src="images/add.png" />
-					<p class="info">Chairman</p>
-				</div>
-				<div id="shopDJ" class="shopItem">
-					<img src="images/add.png" />
-					<p class="info">DJ</p>
-				</div>
+				<ramp-shop-entity type="member"></ramp-shop-entity>
+				<ramp-shop-entity type="chairman"></ramp-shop-entity>
+				<ramp-shop-entity type="dj"></ramp-shop-entity>
 			</div>
+
 		</div>
 	</div>
 
