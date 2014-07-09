@@ -74,7 +74,7 @@ valeblue: rgb(66, 85, 99);
 	width: 25%;
 	height: 100%;
 	right: 0;
-	background-color: rgb(163, 155, 155);
+	background-color: rgb(66, 85, 99);
 }
 
 /**
@@ -112,7 +112,6 @@ valeblue: rgb(66, 85, 99);
 	background-repeat: no-repeat;
 	background-position: top left;
 	width: 64px;
-	height: 64px;
 	background-color: white;
 	margin: 4px;
 	float: left;
@@ -122,10 +121,29 @@ valeblue: rgb(66, 85, 99);
 .shopItem img{
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	top: 36px;
 	width: 24px;
 	height: 24px;
 
+}
+
+.shopItem .info{
+	margin-top: 64px;
+	text-align: center;
+	background-color: rgb(224, 57, 61);
+	color: white;
+	line-height: 24px;
+	font-size: 12px;
+}
+
+#shopChairman{
+	background-image: url("../images/chairman_chair.png");
+}
+#shopMember{
+	background-image: url("../images/chair.png");
+}
+#shopDJ{
+	background-image: url("../images/stool.png");
 }
 
 /**
