@@ -1,0 +1,51 @@
+<!-- <link rel="import" href="bower_components/polymer/polymer.html"> -->
+
+<!--
+
+#####
+
+    <ramp-shop-entity></ramp-shop-entity>
+
+@element ramp-shop-entity
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://RobbyWauters.github.io/ramp-shop-entity
+-->
+<polymer-element name="ramp-shop-entity" attributes="type">
+
+  <template>
+    <link rel="stylesheet" href="ramp-shop-entity.css" />
+
+    <content>
+
+    </content>
+
+  </template>
+
+  <script>
+
+    Polymer('ramp-entity', {
+
+      type: "chair",
+      console: "",
+
+      ready: function() {
+        var self = this;
+
+
+
+        // // CLICKING
+        // $(this).on('click', function(){
+        //   console.log("wadde");
+        // });
+      },
+
+      task: function() {
+
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
