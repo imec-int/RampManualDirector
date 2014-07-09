@@ -19,11 +19,14 @@ a {
 	color: #00B7FF;
 }
 
-h2{
-	font-size: 30px;
-	font-weight: 500;
-	margin-top: 20px;
-}
+/**
+ *	COLORS
+ */
+grey: rgb(158, 158, 158);
+light: rgb(229, 225, 209);
+pink: rgb(224, 57, 61);
+dark: rgb(37, 55, 70);
+valeblue: rgb(66, 85, 99);
 
 /**
  *	GLOBAL PAGE LAYOUT
@@ -66,7 +69,7 @@ h2{
 	background-position: top left;
 }
 
-#buttonView{
+.sideView{
 	position: absolute;
 	width: 25%;
 	height: 100%;
@@ -88,6 +91,41 @@ h2{
 	font-weight: 500;
 	text-align: center;
 	cursor: pointer;
+}
+
+/**
+ *	SHOP VIEW DETAIL
+ */
+
+#shopView h2{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background-color: rgb(37, 55, 70);
+	color: white;
+	font-weight: 500;
+}
+
+.shopItem{
+	position: relative;
+	background-image: url("../images/chair.png");
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 64px;
+	height: 64px;
+	background-color: white;
+	margin: 4px;
+	float: left;
+	cursor: alias;
+}
+
+.shopItem img{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 24px;
+	height: 24px;
+
 }
 
 /**
