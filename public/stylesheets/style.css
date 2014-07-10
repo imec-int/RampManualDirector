@@ -147,6 +147,50 @@ valeblue: rgb(66, 85, 99);
 }
 
 /**
+ *	PROPERTY PANE
+ */
+ .propertyPane{
+ 	width:90%;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	margin-top: 10px;
+ 	background-color: rgb(200, 200, 210);
+ 	overflow: hidden;
+ }
+.propertyPane img{
+	position: absolute;
+	background-color: white;
+	margin-left: 4px;
+	margin-top: 4px;
+	width: 64px;
+	height: 64px;
+}
+.propertyPane .typeTitle{
+	position: absolute;
+	width: 64px;
+	margin-top: 64px;
+	margin-left: 4px;
+	text-align: center;
+	background-color: rgb(224, 57, 61);
+	color: white;
+	line-height: 24px;
+	font-size: 12px;
+	text-transform: capitalize;
+
+}
+.propertyPane p{
+	position: relative;
+	left: 75px;
+	margin-bottom: 20px;
+	color: rgb(60, 60, 60);
+}
+.propertyPane p select{
+	position: absolute;
+	left: 70px;
+	width: 70px;
+}
+
+/**
  *	TOP VIEW DETAIL
  */
 

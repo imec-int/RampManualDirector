@@ -19,8 +19,12 @@ Element providing solution to no problem in particular.
 
     <content>
       <div class="entity" data-type="{{type}}">
-        <img id="img" src="/images/{{imgName}}.png" />
-
+        <div id="handle" class="handle">
+          <img id="img" src="/images/{{imgName}}.png" />
+        </div>
+        <div id="sizeTool" class="total-centered">
+          <span>{{w}}</span>x<span>{{h}}</span>
+        </div>
         <span class="cornerLabel">[{{x}},{{y}}] {{console}}</span>
       </div>
     </content>
@@ -36,6 +40,7 @@ Element providing solution to no problem in particular.
       y: 0,
       w: 1,
       h: 1,
+      sizeTool: false,
       console: "",
       active: false,
       imgName: "chair",
@@ -50,6 +55,11 @@ Element providing solution to no problem in particular.
           "top" : this.y*64
         });
 
+
+
+        //SIZETOOL (table)
+        $(this.$.sizeTool).hide();
+
         // IMAGE
         this.imgName = "";
         switch(this.type){
@@ -61,6 +71,7 @@ Element providing solution to no problem in particular.
             break;
           case "table":
             this.imgName = "table";
+            this.sizeTool = true;
             break;
           case "dj":
             this.imgName = "stool";
@@ -79,6 +90,13 @@ Element providing solution to no problem in particular.
         draggie.on( 'dragMove', function(){
           self.move.call(self);
         } );
+
+        // $(this).on('click', function(ev){
+        //   console.log(ev);
+        //   self.w++;
+        // });
+
+        // console.log($(this.$.sizeTool).find("#sizeRight").first());
 
         // CLICKING
         // $(this).on('click', function(){
@@ -121,7 +139,12 @@ Element providing solution to no problem in particular.
       hChanged: function(oldVal, newVal){
         $(this.$.img).css("width",this.w*64+"px");
         $(this.$.img).css("height",this.h*64+"px");
-      }
+      },
+      sizeToolChanged: function(oldVal, newVal){
+        $(this.$.sizeTool).hide();
+        if(newVal)
+          $(this.$.sizeTool).show();
+      },
 
     });
 

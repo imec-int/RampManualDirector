@@ -43,3 +43,15 @@
 	-o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
 	transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.50+ */
 }
+
+.total-centered {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	text-align: center;
+	-webkit-transform:translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
