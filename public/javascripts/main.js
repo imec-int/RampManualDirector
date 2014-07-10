@@ -11,7 +11,9 @@ var ManualDirector = function (options){
 	var addHandlers = function (){
 		$("ramp-shop-entity").on('click', function(){
 			//console.log($(this).attr("type"));
-        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='up'></ramp-entity>");
+        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down'></ramp-entity>");
+        	$("ramp-entity").on('mouseup', checkDirections);
+        	$("ramp-entity").on('touchend', checkDirections);
         });
         //console.log($("ramp-entity").first());
 
@@ -24,7 +26,7 @@ var ManualDirector = function (options){
 		//tables
 		var table = $("ramp-entity[type='table']").first();
 
-		//console.log($(this));
+		console.log($(this));
 
 		$(this).attr("direction",entityPosToTable($(this),table));
 
