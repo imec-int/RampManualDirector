@@ -19,14 +19,13 @@ var ManualDirector = function (options){
 
         $("ramp-entity").on('mouseup', checkDirections);
         $("ramp-entity").on('touchend', checkDirections);
-
 	};
 
 	var checkDirections = function(event){
 		//tables
 		var table = $("ramp-entity[type='table']").first();
 
-		console.log($(this));
+		//console.log($(this));
 
 		$(this).attr("direction",entityPosToTable($(this),table));
 

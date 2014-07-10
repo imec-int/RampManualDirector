@@ -60,7 +60,7 @@ Element providing solution to no problem in particular.
             this.imgName = "chair";
             break;
           case "table":
-            this.imgName = "table-6x3";
+            this.imgName = "table";
             break;
           case "dj":
             this.imgName = "stool";
@@ -112,6 +112,15 @@ Element providing solution to no problem in particular.
             $(this.$.img).addClass('lookLeft');
             break;
         }
+      },
+
+      wChanged: function(oldVal, newVal){
+        $(this.$.img).css("width",this.w*64+"px");
+        $(this.$.img).css("height",this.h*64+"px");
+      },
+      hChanged: function(oldVal, newVal){
+        $(this.$.img).css("width",this.w*64+"px");
+        $(this.$.img).css("height",this.h*64+"px");
       }
 
     });
