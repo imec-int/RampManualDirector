@@ -12,14 +12,14 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="type x y test active">
+<polymer-element name="ramp-entity" attributes="type x y direction active lookTo w h">
 
   <template>
     <link rel="stylesheet" href="ramp-entity.css" />
 
     <content>
       <div class="entity" data-type="{{type}}">
-        <img src="/images/{{type}}.png" />
+        <img id="img" src="/images/{{imgName}}.png" />
 
         <span class="cornerLabel">[{{x}},{{y}}] {{console}}</span>
       </div>
@@ -34,8 +34,12 @@ Element providing solution to no problem in particular.
       type: "chair",
       x: 0,
       y: 0,
+      w: 1,
+      h: 1,
       console: "",
       active: false,
+      imgName: "chair",
+      direction: "down",
 
       ready: function() {
         var self = this;
@@ -45,6 +49,26 @@ Element providing solution to no problem in particular.
           "left": this.x*64,
           "top" : this.y*64
         });
+
+        // IMAGE
+        this.imgName = "";
+        switch(this.type){
+          case "chairman":
+            this.imgName = "chairman_chair";
+            break;
+          case "member":
+            this.imgName = "chair";
+            break;
+          case "table":
+            this.imgName = "table-6x3";
+            break;
+          case "dj":
+            this.imgName = "stool";
+            break;
+          case "booth":
+            this.imgName = "booth";
+            break;
+        }
 
         // DRAGGING
         var draggie = new Draggabilly( this, {
@@ -70,6 +94,24 @@ Element providing solution to no problem in particular.
       move: function() {
         this.x = Math.floor($(this).position().left/64);
         this.y = Math.floor($(this).position().top/64);
+      },
+
+      directionChanged: function(oldVal, newVal){
+        $(this.$.img).removeClass();
+        switch(newVal){
+          case "up":
+            $(this.$.img).addClass('lookUp');
+            break;
+          case "right":
+            $(this.$.img).addClass('lookRight');
+            break;
+          case "down":
+            $(this.$.img).addClass('lookDown');
+            break;
+          case "left":
+            $(this.$.img).addClass('lookLeft');
+            break;
+        }
       }
 
     });
