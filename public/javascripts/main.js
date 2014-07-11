@@ -3,6 +3,8 @@ var ManualDirector = function (options){
 	var activeRuleNumber = 0;
 	var activeRuleOptions = "";
 
+	var activeEntity;
+
 	var init = function (){
 		addHandlers();
 
@@ -14,16 +16,15 @@ var ManualDirector = function (options){
         	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down'></ramp-entity>");
         	$("ramp-entity").last().on('mouseup', checkDirections);
         	$("ramp-entity").last().on('touchend', checkDirections);
-        	$("ramp-entity").last().on('click', function(){
-	        	showProperties($(this));
-	        });
+        	$("ramp-entity").last().on('click', handleActive);
         });
-        $("ramp-entity").on('click', function(){
-        	showProperties($(this));
-        });
+        $("ramp-entity").on('click', handleActive);
 
         $("ramp-entity").on('mouseup', checkDirections);
         $("ramp-entity").on('touchend', checkDirections);
+
+        $(".propertyPane select").change( syncEntityProperties);
+        $(".propertyPane #remove").on('click', removeEntity);
 	};
 
 	var checkDirections = function(event){
@@ -35,6 +36,31 @@ var ManualDirector = function (options){
 
 		$(this).attr("direction",entityPosToTable($(this),table));
 	};
+
+	var handleActive = function(event){
+		if(activeEntity)
+    		activeEntity["active"]=false;
+
+		if(activeEntity != this){
+    		activeEntity = this;
+        	this["active"]=true;
+        	showProperties(this);
+        	$(".propertyPane #propForm").show();
+        	$(".propertyPane #propMessage").hide();
+    	}else{
+    		activeEntity = null;
+    		$(".propertyPane #propForm").hide();
+    		$(".propertyPane #propMessage").show();
+    	}
+	};
+
+	var removeEntity = function(event){
+		if(activeEntity)
+    		$(activeEntity).remove();
+    	activeEntity = null;
+    	$(".propertyPane #propForm").hide();
+    	$(".propertyPane #propMessage").show();
+	}
 
 	var entityPosToTable = function(entity, table){
 		// Help variables
@@ -67,21 +93,27 @@ var ManualDirector = function (options){
 		if(((ent.x >= tab.x) && (ent.x < tab.x+tab.w)) && (ent.y == tab.y+tab.h))
 			return "up";
 
-		return "";
+		return "down";
 	}
 
 	var showProperties = function(entity){
-		console.log(entity[0]["imgName"]);
-		$(".typeTitle").text(entity[0]["type"]);
-		$(".propertyPane img").attr("src", "images/"+entity[0]["imgName"]+".png");
+		$(".typeTitle").text(entity["type"]);
+		$(".propertyPane img").attr("src", "images/"+entity["imgName"]+".png");
 		//$("select[name='micID']").val(entity[0]["x"]);
 		//$("select[name='onSeat']").val(entity[0]["x"]);
-		$("select[name='x']").val(entity[0]["x"]);
-		$("select[name='y']").val(entity[0]["y"]);
-		$("select[name='w']").val(entity[0]["w"]);
-		$("select[name='h']").val(entity[0]["h"]);
-		$("select[name='direction']").val(entity[0]["direction"]);
+		$("select[name='x']").val(entity["x"]);
+		$("select[name='y']").val(entity["y"]);
+		$("select[name='w']").val(entity["w"]);
+		$("select[name='h']").val(entity["h"]);
+		$("select[name='direction']").val(entity["direction"]);
 	};
+
+	var syncEntityProperties = function(event){
+		if(activeEntity){
+			activeEntity[$(this).attr("name")] = $(this).val();
+		}
+	}
+
 
 	return {
 		init: init

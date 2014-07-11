@@ -157,6 +157,9 @@ valeblue: rgb(66, 85, 99);
  	background-color: rgb(200, 200, 210);
  	overflow: hidden;
  }
+.propertyPane #propForm{
+	display: none;
+}
 .propertyPane img{
 	position: absolute;
 	background-color: white;
@@ -176,7 +179,6 @@ valeblue: rgb(66, 85, 99);
 	line-height: 24px;
 	font-size: 12px;
 	text-transform: capitalize;
-
 }
 .propertyPane p{
 	position: relative;
@@ -188,6 +190,17 @@ valeblue: rgb(66, 85, 99);
 	position: absolute;
 	left: 70px;
 	width: 70px;
+}
+#propMessage{
+	display: block;
+	margin-top: 20px;
+}
+.propertyPane #remove{
+	text-align: center;
+	background-color: rgb(224, 57, 61);
+	color: white;
+	line-height: 24px;
+	cursor: pointer;
 }
 
 /**

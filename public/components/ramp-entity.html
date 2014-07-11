@@ -114,7 +114,41 @@ Element providing solution to no problem in particular.
         this.y = Math.floor($(this).position().top/64);
       },
 
+      activeChanged: function(oldVal, newVal){
+        if(newVal){
+          $(this).css("background-color", "rgba(255, 199, 199, 1)" );
+        }else{
+          $(this).css("background-color", "rgba(255, 199, 199, 0)" );
+        }
+      },
+
+      xChanged: function(oldVal, newVal){
+        if($(this)){
+          if(!$(this).hasClass("is-dragging")){
+            // console(this.x);
+            $(this).css("left",this.x*64+"px");
+          }
+        }
+
+      },
+
+      yChanged: function(oldVal, newVal){
+        if($(this)){
+          if(!$(this).hasClass("is-dragging")){
+            $(this).css("top",this.y*64+"px");
+          }
+        }
+      },
+      wChanged: function(oldVal, newVal){
+        $(this.$.img).css("width",this.w*64+"px");
+        $(this.$.img).css("height",this.h*64+"px");
+      },
+      hChanged: function(oldVal, newVal){
+        $(this.$.img).css("width",this.w*64+"px");
+        $(this.$.img).css("height",this.h*64+"px");
+      },
       directionChanged: function(oldVal, newVal){
+        console.log(newVal);
         $(this.$.img).removeClass();
         switch(newVal){
           case "up":
@@ -132,14 +166,7 @@ Element providing solution to no problem in particular.
         }
       },
 
-      wChanged: function(oldVal, newVal){
-        $(this.$.img).css("width",this.w*64+"px");
-        $(this.$.img).css("height",this.h*64+"px");
-      },
-      hChanged: function(oldVal, newVal){
-        $(this.$.img).css("width",this.w*64+"px");
-        $(this.$.img).css("height",this.h*64+"px");
-      },
+
       sizeToolChanged: function(oldVal, newVal){
         $(this.$.sizeTool).hide();
         if(newVal)
