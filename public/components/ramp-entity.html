@@ -12,7 +12,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="type x y direction active lookTo w h">
+<polymer-element name="ramp-entity" attributes="type x y direction active lookTo w h micId onSeat">
 
   <template>
     <link rel="stylesheet" href="ramp-entity.css" />
@@ -45,9 +45,13 @@ Element providing solution to no problem in particular.
       active: false,
       imgName: "chair",
       direction: "down",
+      micId: 1,
+      onSeat: false,
 
       ready: function() {
         var self = this;
+
+        this.onSeat = Boolean(this.onSeat);
 
         // POSITIONING
         $(this).css({
@@ -122,10 +126,13 @@ Element providing solution to no problem in particular.
         }
       },
 
+      onSeatChanged: function(oldVal, newVal){
+        this.onSeat = Boolean(newVal);
+      },
+
       xChanged: function(oldVal, newVal){
         if($(this)){
           if(!$(this).hasClass("is-dragging")){
-            // console(this.x);
             $(this).css("left",this.x*64+"px");
           }
         }
@@ -148,7 +155,6 @@ Element providing solution to no problem in particular.
         $(this.$.img).css("height",this.h*64+"px");
       },
       directionChanged: function(oldVal, newVal){
-        console.log(newVal);
         $(this.$.img).removeClass();
         switch(newVal){
           case "up":
