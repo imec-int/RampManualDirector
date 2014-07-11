@@ -76,6 +76,7 @@ Element providing solution to no problem in particular.
           case "table":
             this.imgName = "table";
             this.sizeTool = true;
+            this.micId = "NA";
             break;
           case "dj":
             this.imgName = "stool";
@@ -94,23 +95,6 @@ Element providing solution to no problem in particular.
         draggie.on( 'dragMove', function(){
           self.move.call(self);
         } );
-
-        // $(this).on('click', function(ev){
-        //   console.log(ev);
-        //   self.w++;
-        // });
-
-        // console.log($(this.$.sizeTool).find("#sizeRight").first());
-
-        // CLICKING
-        // $(this).on('click', function(){
-        //   self.active = !self.active;
-        //   if(self.active){
-        //     $(this).css("background-color", "rgba(255, 199, 199, 1)" );
-        //   }else{
-        //     $(this).css("background-color", "rgba(255, 199, 199, 0)" );
-        //   }
-        // });
       },
 
       move: function() {
@@ -120,9 +104,11 @@ Element providing solution to no problem in particular.
 
       activeChanged: function(oldVal, newVal){
         if(newVal){
-          $(this).css("background-color", "rgba(255, 199, 199, 1)" );
+          $(this).css("background-color", "rgb(255, 199, 199)" );
+          $(this).css("font-weight", "bold" );
         }else{
-          $(this).css("background-color", "rgba(255, 199, 199, 0)" );
+          $(this).css("background-color", "none" );
+          $(this).css("font-weight", "normal" );
         }
       },
 

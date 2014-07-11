@@ -14,6 +14,7 @@
   position: relative;
   background-repeat: no-repeat;
   background-position: top left;
+  background-size: contain;
   width: 64px;
   background-color: white;
   margin: 4px;

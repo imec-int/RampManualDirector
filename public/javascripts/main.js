@@ -16,12 +16,15 @@ var ManualDirector = function (options){
         	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down'></ramp-entity>");
         	$("ramp-entity").last().on('mouseup', checkDirections);
         	$("ramp-entity").last().on('touchend', checkDirections);
-        	$("ramp-entity").last().on('click', handleActive);
+        	$("ramp-entity").last().on('mouseup', handleActive);
+        	$("ramp-entity").last().on('touchend', handleActive);
         });
-        $("ramp-entity").on('click', handleActive);
 
-        $("ramp-entity").on('mouseup', checkDirections);
-        $("ramp-entity").on('touchend', checkDirections);
+        $("ramp-entity").on('mouseup', handleActive);
+        $("ramp-entity").on('touchend', handleActive);
+
+        // $("ramp-entity").on('mouseup', checkDirections);
+        // $("ramp-entity").on('touchend', checkDirections);
 
         $(".propertyPane select").change( syncEntityProperties);
         $(".propertyPane #remove").on('click', removeEntity);
@@ -38,6 +41,7 @@ var ManualDirector = function (options){
 	};
 
 	var handleActive = function(event){
+		event.preventDefault();
 		if(activeEntity)
     		activeEntity["active"]=false;
 
@@ -52,6 +56,7 @@ var ManualDirector = function (options){
     		$(".propertyPane #propForm").hide();
     		$(".propertyPane #propMessage").show();
     	}
+    	checkDirections(event);
     	sceneToJSON();
 	};
 
