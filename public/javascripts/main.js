@@ -52,6 +52,7 @@ var ManualDirector = function (options){
     		$(".propertyPane #propForm").hide();
     		$(".propertyPane #propMessage").show();
     	}
+    	sceneToJSON();
 	};
 
 	var removeEntity = function(event){
@@ -99,8 +100,8 @@ var ManualDirector = function (options){
 	var showProperties = function(entity){
 		$(".typeTitle").text(entity["type"]);
 		$(".propertyPane img").attr("src", "images/"+entity["imgName"]+".png");
-		//$("select[name='micID']").val(entity[0]["x"]);
-		//$("select[name='onSeat']").val(entity[0]["x"]);
+		$("select[name='micID']").val(entity["micId"]);
+		$("select[name='onSeat']").val(""+entity["onSeat"]);
 		$("select[name='x']").val(entity["x"]);
 		$("select[name='y']").val(entity["y"]);
 		$("select[name='w']").val(entity["w"]);
@@ -112,6 +113,24 @@ var ManualDirector = function (options){
 		if(activeEntity){
 			activeEntity[$(this).attr("name")] = $(this).val();
 		}
+	};
+
+	var sceneToJSON = function(){
+		var entities = [$("ramp-entity").length];
+		$("ramp-entity").each(function(index,ent){
+			entities[index] = {
+				"type": ent["type"],
+				"micId": ent["micId"],
+				"x": ent["x"],
+				"y": ent["y"],
+				"w": ent["w"],
+				"h": ent["h"],
+				"direction": ent["direction"],
+				"onSeat": ent["onSeat"]
+			}
+		});
+		var scene = {"scene":"DirectorQ", "entities": entities};
+		//console.log(JSON.stringify(scene));
 	}
 
 
