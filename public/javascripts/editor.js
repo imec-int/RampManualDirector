@@ -1,4 +1,4 @@
-var ManualDirector = function (options){
+var ManualDirectorEditor = function (options){
 
 	var activeRuleNumber = 0;
 	var activeRuleOptions = "";
@@ -146,6 +146,6 @@ var ManualDirector = function (options){
 
 
 $(function(){
-	var app = new ManualDirector();
+	var app = new ManualDirectorEditor();
 	app.init();
 });

@@ -3,11 +3,11 @@ var router = express.Router();
 var serverUrl = require('../config').serverUrl;
 var httpreq = require('httpreq');
 
-var currentRoomConfig = [];
+var currentRoomConfig = ["wadde","lol"];
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	res.render('index', { title: 'Manual Director - Q' , roomConfig: null});
+	res.render('index', { title: 'Manual Director - Q' , roomConfig: currentRoomConfig});
 
 });
 
