@@ -14,14 +14,12 @@
 
   </head>
   <body>
-
+  	<script>
+		var roomConfig = <%- roomConfig %>;
+	</script>
 
 	<div id="container">
 		<div id="topView">
-			<ramp-entity type="table" x="2" y="2" w="5" h="3"></ramp-entity>
-			<ramp-entity type="member" x="3" y="1"></ramp-entity>
-			<ramp-entity type="member" x="4" y="1"></ramp-entity>
-			<ramp-entity type="member" x="5" y="1"></ramp-entity>
 
 		</div>
 		<div id="buttonView" class="sideView">
@@ -53,6 +51,6 @@
 	<script src="vendor/gsap/plugins/CSSPlugin.min.js"></script>-->
 
 
-	<script src="javascripts/main.js"></script>
+	<script src="javascripts/viewer.js"></script>
   </body>
 </html>
