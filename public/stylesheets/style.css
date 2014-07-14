@@ -219,3 +219,12 @@ valeblue: rgb(66, 85, 99);
 	width: 62px;
 	height: 62px;
 }
+
+/*sync*/
+.syncButton{
+	background-color: red;
+	color: white;
+	margin: 20px 20px 20px 20px;
+	text-align: center;
+	padding: 20px;
+}

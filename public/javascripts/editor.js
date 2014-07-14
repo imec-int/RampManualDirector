@@ -28,6 +28,23 @@ var ManualDirectorEditor = function (options){
 
         $(".propertyPane select").change( syncEntityProperties);
         $(".propertyPane #remove").on('click', removeEntity);
+
+        $(".syncButton").click(function(event){
+        	$(".syncButton").css({ opacity: 0.5 });
+        	var scene = sceneToJSON();
+        	$.ajax({
+				url: '/configuration',
+				type: 'POST',
+				contentType:'application/json',
+				data: JSON.stringify(scene),
+				// dataType:'json',
+				success: function(data){
+					$(".syncButton").css({ opacity: 1 });
+					// console.log(data);
+				}
+			});
+
+        });
 	};
 
 	var checkDirections = function(event){
@@ -57,7 +74,8 @@ var ManualDirectorEditor = function (options){
     		$(".propertyPane #propMessage").show();
     	}
     	checkDirections(event);
-    	sceneToJSON();
+    	// not necessary to keep track of this continuously
+    	// sceneToJSON();
 	};
 
 	var removeEntity = function(event){
@@ -135,7 +153,7 @@ var ManualDirectorEditor = function (options){
 			}
 		});
 		var scene = {"scene":"DirectorQ", "entities": entities};
-		//console.log(JSON.stringify(scene));
+		return scene;
 	}
 
 

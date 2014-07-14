@@ -3,7 +3,7 @@ var router = express.Router();
 var serverUrl = require('../config').serverUrl;
 var httpreq = require('httpreq');
 
-var currentRoomConfig = {"scene":"DirectorQ","entities":[{"type":"table","micId":"NA","x":2,"y":2,"w":5,"h":3,"direction":"down","onSeat":false},{"type":"member","micId":1,"x":3,"y":1,"w":1,"h":1,"direction":"down","onSeat":false},{"type":"member","micId":1,"x":4,"y":1,"w":1,"h":1,"direction":"down","onSeat":false},{"type":"member","micId":1,"x":5,"y":1,"w":1,"h":1,"direction":"down","onSeat":false}]};
+var currentRoomConfig = {"scene":"DirectorQ","entities":[]};
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -20,6 +20,11 @@ router.get('/dragtest', function(req, res) {
 	res.render('dragtest', { title: 'Drag test'});
 });
 
+router.post('/configuration', function(req, res) {
+	currentRoomConfig = req.body;
+	console.log(currentRoomConfig);
+	res.send(200);
+});
 /* POST trigger to the Trigger Consolidation Secret Command Center */
 //router.post(.......
 
