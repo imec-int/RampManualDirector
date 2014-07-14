@@ -18,6 +18,8 @@ var ManualDirectorEditor = function (options){
         	$("ramp-entity").last().on('touchend', checkDirections);
         	$("ramp-entity").last().on('mouseup', handleActive);
         	$("ramp-entity").last().on('touchend', handleActive);
+        	// make this element already active
+        	setTimeout(function(){$("ramp-entity").last().trigger('mouseup');},1);
         });
 
         $("ramp-entity").on('mouseup', handleActive);
