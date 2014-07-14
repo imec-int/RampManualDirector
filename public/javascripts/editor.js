@@ -13,7 +13,7 @@ var ManualDirectorEditor = function (options){
 	var addHandlers = function (){
 		$("ramp-shop-entity").on('click', function(){
 			//console.log($(this).attr("type"));
-        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down'></ramp-entity>");
+        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down' editable='true'></ramp-entity>");
         	$("ramp-entity").last().on('mouseup', checkDirections);
         	$("ramp-entity").last().on('touchend', checkDirections);
         	$("ramp-entity").last().on('mouseup', handleActive);
