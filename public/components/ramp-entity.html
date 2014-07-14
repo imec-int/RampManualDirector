@@ -12,7 +12,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://RobbyWauters.github.io/ramp-entity
 -->
-<polymer-element name="ramp-entity" attributes="type x y direction active lookTo w h micId onSeat">
+<polymer-element name="ramp-entity" attributes="type x y direction active lookTo w h micId onSeat editable">
 
   <template>
     <link rel="stylesheet" href="ramp-entity.css" />
@@ -25,7 +25,7 @@ Element providing solution to no problem in particular.
         <div id="sizeTool" class="total-centered">
           <span>{{w}}</span>x<span>{{h}}</span>
         </div>
-        <span class="cornerLabel">[{{x}},{{y}}] {{console}}</span>
+        <span id="cornerLabel">[{{x}},{{y}}] {{console}}</span>
       </div>
     </content>
 
@@ -47,6 +47,7 @@ Element providing solution to no problem in particular.
       direction: "down",
       micId: 1,
       onSeat: false,
+      editable: false,
 
       ready: function() {
         var self = this;
@@ -75,8 +76,9 @@ Element providing solution to no problem in particular.
             break;
           case "table":
             this.imgName = "table";
-            this.sizeTool = true;
             this.micId = "NA";
+            if(this.editable)
+              this.sizeTool = true;
             break;
           case "dj":
             this.imgName = "stool";
@@ -85,16 +87,20 @@ Element providing solution to no problem in particular.
             this.imgName = "booth";
             break;
         }
+        if(this.editable){
+          // DRAGGING
+          var draggie = new Draggabilly( this, {
+            containment: '#topView',
+            grid: [ 64, 64 ]
+          });
 
-        // DRAGGING
-        var draggie = new Draggabilly( this, {
-          containment: '#topView',
-          grid: [ 64, 64 ]
-        });
+          draggie.on( 'dragMove', function(){
+            self.move.call(self);
+          } );
+        }else{
+          $(this.$.cornerLabel).hide();
+        }
 
-        draggie.on( 'dragMove', function(){
-          self.move.call(self);
-        } );
       },
 
       move: function() {
