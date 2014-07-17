@@ -125,7 +125,7 @@ var ManualDirectorEditor = function (options){
 	var showProperties = function(entity){
 		$(".typeTitle").text(entity["type"]);
 		$(".propertyPane img").attr("src", "images/"+entity["imgName"]+".png");
-		$("select[name='micID']").val(entity["micId"]);
+		$("select[name='micId']").val(entity["micId"]);
 		$("select[name='onSeat']").val(""+entity["onSeat"]);
 		$("select[name='x']").val(entity["x"]);
 		$("select[name='y']").val(entity["y"]);
@@ -142,7 +142,10 @@ var ManualDirectorEditor = function (options){
 
 	var sceneToJSON = function(){
 		var entities = [$("ramp-entity").length];
+		var micIds = {};
 		$("ramp-entity").each(function(index,ent){
+			if(micIds[ent.micId]) alert('Id ' + ent.micId + ' is used more than once!');
+			micIds[ent.micId] = true;
 			entities[index] = {
 				"type": ent["type"],
 				"micId": ent["micId"],
