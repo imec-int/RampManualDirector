@@ -27,5 +27,11 @@ router.post('/configuration', function(req, res) {
 });
 /* POST trigger to the Trigger Consolidation Secret Command Center */
 //router.post(.......
+router.post('/entity/:entitid', function(req, res) {
+	console.log(req.params.entitid);
+	console.log(req.body);
+	// TODO: relay to mmlab
+	res.send(200);
+});
 
 module.exports = router;

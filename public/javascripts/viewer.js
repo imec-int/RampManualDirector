@@ -7,19 +7,19 @@ var ManualDirector = function (options){
 
 
 	var init = function (){
-		addHandlers();
 		generateScene();
+		addHandlers();
 	};
 
 	var addHandlers = function (){
-		// $("ramp-entity").on('mouseup', handleActive);
-  //       $("ramp-entity").on('touchend', handleActive);
-
-  		this.scene = roomConfig;
-  		//console.log(this.scene);
+		$("ramp-entity").on('mouseup', handleActive);
+		// mag deze weg? http://stackoverflow.com/questions/8503453/click-event-called-twice-on-touchend-in-ipad
+		// niet getest op echte iPad
+		// $("ramp-entity").on('touchend', handleActive);
 	};
 
 	var generateScene = function(){
+		this.scene = roomConfig;
 		console.log(this.scene);
 		if(this.scene){
 			var ent = null;
@@ -32,12 +32,22 @@ var ManualDirector = function (options){
 		}
 	};
 
+	var handleActive = function(event){
+		event.preventDefault();
+		// wordt automatisch gereflecteerd in DOM
+		if(!this.active) this.active = true;
+		else this.active = false;
+		$.post('/entity/' + this.micId, {active: this.active}, function(data){console.log(data);});
+
+	}
+
 	var sceneToJSON = function(){
 		var entities = [$("ramp-entity").length];
 		$("ramp-entity").each(function(index,ent){
 			entities[index] = {
 				"type": ent["type"],
 				"micId": ent["micId"],
+				"active": ent["active"],
 				"x": ent["x"],
 				"y": ent["y"],
 				"w": ent["w"],
