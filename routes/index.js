@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var serverUrl = require('../config').serverUrl;
 var httpreq = require('httpreq');
+var adapter = require('../adapter');
 
 var currentRoomConfig = {"scene":"DirectorQ","entities":[]};
 
@@ -29,7 +30,9 @@ router.post('/configuration', function(req, res) {
 //router.post(.......
 router.post('/entity/:entitid', function(req, res) {
 	console.log(req.params.entitid);
-	console.log(req.body);
+	// convert string to bool
+	var active = req.body.active === 'true';
+	console.log(JSON.stringify(adapter.televicMicrophone(req.params.entitid, active)));
 	// TODO: relay to mmlab
 	res.send(200);
 });
