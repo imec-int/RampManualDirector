@@ -25,7 +25,7 @@ function televicMicrophone(id, active){
       e: [{
         tag: "ramp:ManualDirector",
         State: (active? "On" : "Off"),
-        MicID: id,
+        UserID: id,
         // DocumentID
         Duration: 0
       }]

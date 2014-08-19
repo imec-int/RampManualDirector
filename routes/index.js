@@ -32,9 +32,20 @@ router.post('/entity/:entitid', function(req, res) {
 	console.log(req.params.entitid);
 	// convert string to bool
 	var active = req.body.active === 'true';
-	console.log(JSON.stringify(adapter.televicMicrophone(req.params.entitid, active)));
-	// TODO: relay to mmlab
-	res.send(200);
+	var transformedBody = adapter.televicMicrophone(req.params.entitid, active);
+	// console.log(JSON.stringify(adapter.televicMicrophone(req.params.entitid, active)));
+	httpreq.post(serverUrl, {json: transformedBody}, function (err, resu){
+			if(err) {
+				console.log(err);
+				res.send(500);
+			}
+			else {
+				console.log(resu.body);
+				res.send(200);
+			}
+
+		});
+
 });
 
 module.exports = router;
