@@ -34,13 +34,13 @@ router.post('/entity/:entitid', function(req, res) {
 	var active = req.body.active === 'true';
 	var transformedBody = adapter.televicMicrophone(req.params.entitid, active);
 	// console.log(JSON.stringify(adapter.televicMicrophone(req.params.entitid, active)));
-	httpreq.post(serverUrl, {json: transformedBody}, function (err, resu){
+	httpreq.put(serverUrl, {json: transformedBody}, function (err, resu){
 			if(err) {
 				console.log(err);
 				res.send(500);
 			}
 			else {
-				console.log(resu.body);
+				// console.log(resu.body);
 				res.send(200);
 			}
 
