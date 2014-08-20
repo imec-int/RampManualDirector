@@ -13,7 +13,7 @@ var ManualDirectorEditor = function (options){
 	var addHandlers = function (){
 		$("ramp-shop-entity").on('click', function(){
 			//console.log($(this).attr("type"));
-        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' x='0' y='0' direction='down' editable='true'></ramp-entity>");
+        	$("#topView").append("<ramp-entity type='"+$(this).attr("type")+"' description='"+$(this).attr("description")+"' x='0' y='0' direction='down' editable='true'></ramp-entity>");
         	$("ramp-entity").last().on('mouseup', checkDirections);
         	$("ramp-entity").last().on('touchend', checkDirections);
         	$("ramp-entity").last().on('mouseup', handleActive);
@@ -29,7 +29,6 @@ var ManualDirectorEditor = function (options){
         // $("ramp-entity").on('touchend', checkDirections);
 
         $(".propertyPane select").change( syncEntityProperties);
-        $(".propertyPane input").change(syncEntityProperties);
 
         $(".propertyPane #remove").on('click', removeEntity);
 
@@ -127,7 +126,7 @@ var ManualDirectorEditor = function (options){
 	var showProperties = function(entity){
 		$(".typeTitle").text(entity["type"]);
 		$(".propertyPane img").attr("src", "images/"+entity["imgName"]+".png");
-		$("input[name='description']").val(entity["description"]);
+		$("select[name='description']").val(entity["description"]);
 		$("select[name='micId']").val(entity["micId"]);
 		$("select[name='onSeat']").val(""+entity["onSeat"]);
 		$("select[name='x']").val(entity["x"]);

@@ -27,6 +27,7 @@ router.post('/configuration', function(req, res) {
 	// console.log(currentRoomConfig);
 	var postBody = { "studioconfig": {}};
 	if(currentRoomConfig.entities && currentRoomConfig.entities.length > 0){
+		// probably better to emit unknown labels, but still working
 		for(var i = 0; i < currentRoomConfig.entities.length; i++){
 			postBody.studioconfig[currentRoomConfig.entities[i].description] = currentRoomConfig.entities[i].micId;
 		}

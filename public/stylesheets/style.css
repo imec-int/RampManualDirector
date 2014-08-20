@@ -195,15 +195,6 @@ valeblue: rgb(66, 85, 99);
 	width: 70px;
 }
 
-.propertyPane p input{
-	position: absolute;
-	left: 70px;
-	width: 70px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	padding: 1px 0px 2px 7px;
-}
 
 #propMessage{
 	display: block;
