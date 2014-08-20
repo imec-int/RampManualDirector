@@ -29,6 +29,8 @@ var ManualDirectorEditor = function (options){
         // $("ramp-entity").on('touchend', checkDirections);
 
         $(".propertyPane select").change( syncEntityProperties);
+        $(".propertyPane input").change(syncEntityProperties);
+
         $(".propertyPane #remove").on('click', removeEntity);
 
         $(".syncButton").click(function(event){
@@ -125,6 +127,7 @@ var ManualDirectorEditor = function (options){
 	var showProperties = function(entity){
 		$(".typeTitle").text(entity["type"]);
 		$(".propertyPane img").attr("src", "images/"+entity["imgName"]+".png");
+		$("input[name='description']").val(entity["description"]);
 		$("select[name='micId']").val(entity["micId"]);
 		$("select[name='onSeat']").val(""+entity["onSeat"]);
 		$("select[name='x']").val(entity["x"]);
@@ -148,6 +151,7 @@ var ManualDirectorEditor = function (options){
 			micIds[ent.micId] = true;
 			entities[index] = {
 				"type": ent["type"],
+				"description": ent["description"],
 				"micId": ent["micId"],
 				"x": ent["x"],
 				"y": ent["y"],
