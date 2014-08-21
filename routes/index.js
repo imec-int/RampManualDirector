@@ -32,7 +32,7 @@ router.post('/configuration', function(req, res) {
 			// hardcoded; reasoning engine can't deal with unknown stuff
 			var options = ['mainguest', 'dj', 'secondguest', 'thirdguest'];
 			if(options.indexOf(field) >= 0)
-				postBody.studioconfig[currentRoomConfig.entities[i].description] = currentRoomConfig.entities[i].micId;
+				postBody.studioconfig[currentRoomConfig.entities[i].description] = parseInt(currentRoomConfig.entities[i].micId);
 		}
 	}
 	console.log(postBody);
