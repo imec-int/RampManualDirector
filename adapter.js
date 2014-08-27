@@ -27,7 +27,7 @@ function televicMicrophone(id, active){
         State: (active? "On" : "Off"),
         UserID: parseInt(id),
         // DocumentID
-        Duration: 0
+        Duration: 8
       }]
     },
     prefixes: {
