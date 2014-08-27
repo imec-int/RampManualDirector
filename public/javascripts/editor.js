@@ -6,8 +6,8 @@ var ManualDirectorEditor = function (options){
 	var activeEntity;
 
 	var init = function (){
+		generateScene();
 		addHandlers();
-
 	};
 
 	var addHandlers = function (){
@@ -34,6 +34,7 @@ var ManualDirectorEditor = function (options){
 
         $(".syncButton").click(function(event){
         	$(".syncButton").css({ opacity: 0.5 });
+        	$(".syncButton").html("Saved");
         	var scene = sceneToJSON();
         	$.ajax({
 				url: '/configuration',
@@ -50,12 +51,32 @@ var ManualDirectorEditor = function (options){
         });
 	};
 
+	var generateScene = function(){
+		this.scene = roomConfig;
+		console.log(this.scene);
+		if(this.scene){
+			var ent = null;
+			for (var i = 0; i < this.scene.entities.length; i++) {
+				ent = this.scene.entities[i];
+				$("#topView").append("<ramp-entity editable='true' type='"+ent.type+"' micId='"+ent.micId+"' x='"+ent.x+"' y='"+ent.y+"' w='"+ent.w+"' h='"+ent.h+"' direction='"+ent.direction+"' onSeat='"+ent.onSeat+"'></ramp-entity>");
+			};
+		}else{
+			console.log("no scene detected");
+		}
+	};
+
+	var resetSyncButton = function(){
+		$(".syncButton").css({ opacity: 1 });
+        $(".syncButton").html("Save Config");
+	};
+
 	var checkDirections = function(event){
 		event.preventDefault();
 		//tables
 		var table = $("ramp-entity[type='table']").first();
 
 		//console.log($(this));
+		resetSyncButton();
 
 		$(this).attr("direction",entityPosToTable($(this),table));
 	};
@@ -140,6 +161,7 @@ var ManualDirectorEditor = function (options){
 		if(activeEntity){
 			activeEntity[$(this).attr("name")] = $(this).val();
 		}
+		resetSyncButton();
 	};
 
 	var sceneToJSON = function(){

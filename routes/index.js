@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/editor', function(req, res) {
-	res.render('editor', { title: 'Manual Director - Q' , roomConfig: null});
+	res.render('editor', { title: 'Manual Director - Q' , roomConfig: JSON.stringify(currentRoomConfig)});
 
 });
 
