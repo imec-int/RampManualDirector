@@ -112,6 +112,9 @@ var ManualDirectorEditor = function (options){
 
 	var entityPosToTable = function(entity, table){
 		// Help variables
+		if(table.length<=0)
+			return "down";
+
 		var ent = {
 			x:entity[0]["x"],
 			y:entity[0]["y"]
